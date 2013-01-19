@@ -67,7 +67,7 @@ share/downloads/vim73: share/downloads/vim-7.3.tar.bz2
 	cd `dirname $@` && tar -xjf $(notdir $<)
 
 share/packages/vim/7.3: share/downloads/vim73 share/packages/pcre/8.31 share/packages/ncurses/5.9 share/bubble.base
-	cd $< && CPPFLAGS="-I$$(cat ../../bubble.base)/share/packages/pcre/8.31/include -I$$(cat ../../bubble.base)/share/packages/ncurses/5.9/include" LDFLAGS="-L$$(cat ../../bubble.base)/share/packages/pcre/8.31/lib -L$$(cat ../../bubble.base)/share/packages/ncurses/5.9/lib" ./configure --prefix=`cat ../../bubble.base`/$@ --enable-multibyte --with-compiledby=Bubble --with-tlib=ncursesw --with-features=huge
+	cd $< && CPPFLAGS="-I$$(cat ../../bubble.base)/share/packages/pcre/8.31/include -I$$(cat ../../bubble.base)/share/packages/ncurses/5.9/include" LDFLAGS="-L$$(cat ../../bubble.base)/share/packages/pcre/8.31/lib -L$$(cat ../../bubble.base)/share/packages/ncurses/5.9/lib" ./configure --prefix=`cat ../../bubble.base`/$@ --enable-multibyte --with-compiledby=Bubble --with-tlib=ncursesw --with-features=huge --disable-selinux
 	cd $< && make install
 
 vim-7.3: share/packages/vim/7.3
@@ -277,7 +277,7 @@ share/downloads/git-1.8.0: share/downloads/git-1.8.0.tar.gz
 
 share/packages/git/1.8.0: share/downloads/git-1.8.0 share/packages/openssl/1.0.1c share/packages/gettext/0.18.1.1 share/packages/curl/7.28.1 share/packages/libiconv/1.14 share/packages/pcre/8.31 share/bubble.base
 	cd $< && make configure
-	cd $< && CPPFLAGS="-I$$(cat ../../bubble.base)/share/packages/gettext/0.18.1.1/include" LDFLAGS="-L$$(cat ../../bubble.base)/share/packages/gettext/0.18.1.1/lib" ./configure --prefix=`cat ../../bubble.base`/$@ --with-sane-tool-path=`cat ../../bubble.base`/share/packages/gettext/0.18.1.1/bin --with-iconv=`cat ../../bubble.base`/share/packages/libiconv/1.1.4 --with-libpcre=`cat ../../bubble.base`/share/packages/pcre/8.31 --with-openssl=`cat ../../bubble.base`/share/packages/openssl/1.0.1c --with-curl=`cat ../../bubble.base`/share/packages/curl/7.28.1
+	cd $< && CPPFLAGS="-I$$(cat ../../bubble.base)/share/packages/gettext/0.18.1.1/include" LDFLAGS="-L$$(cat ../../bubble.base)/share/packages/gettext/0.18.1.1/lib" ./configure --prefix=`cat ../../bubble.base`/$@ --with-sane-tool-path=`cat ../../bubble.base`/share/packages/gettext/0.18.1.1/bin --with-iconv=`cat ../../bubble.base`/share/packages/libiconv/1.1.4 --with-libpcre=`cat ../../bubble.base`/share/packages/pcre/8.31 --with-openssl=`cat ../../bubble.base`/share/packages/openssl/1.0.1c --with-curl=`cat ../../bubble.base`/share/packages/curl/7.28.1 --with-zlib=`cat ../../bubble.base`/share/packages/zlib/1.2.7
 	cd $< && make -j4
 	cd $< && make install
 
